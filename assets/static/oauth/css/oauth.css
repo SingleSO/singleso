@@ -1,0 +1,57 @@
+.auth-clients {
+	list-style: none;
+	margin: 0 0 1em;
+	padding: 0;
+}
+.auth-clients .auth-client {
+	margin: 0 0 0.25em 0;
+}
+.auth-clients .auth-client .auth-link {
+	display: block;
+	color: white;
+	vertical-align: middle;
+	position: relative;
+	overflow: hidden;
+	background: #999999;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+}
+.auth-clients .auth-client .auth-link .auth-icon {
+	vertical-align: top;
+	display: inline-block;
+	width: 1.5em;
+	height: 1.5em;
+	margin: 0.4em;
+	position: relative;
+}
+.auth-clients .auth-client .auth-link .auth-title {
+	line-height: 1.5em;
+	margin: 0.4em;
+	margin-left: 0;
+	display: inline-block;
+	position: relative;
+}
+.auth-clients .auth-client .auth-link .auth-icon > svg {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+}
+.auth-clients .auth-client .auth-link.google {
+	background: #db4e3f;
+}
+.auth-clients .auth-client .auth-link.facebook {
+	background: #3c5a99;
+}
+.auth-clients .auth-client .auth-link.twitter {
+	background: #55acee;
+}
+.auth-clients .auth-client .auth-link:hover:before,
+.auth-clients .auth-client .auth-link:focus:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.2);
+}

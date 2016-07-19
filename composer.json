@@ -1,0 +1,44 @@
+{
+    "name": "singleso/singleso",
+    "description": "Single Sign-On System",
+    "keywords": [
+        "Single Sign-On",
+        "SSO"
+    ],
+    "homepage": "https://github.com/SingleSO",
+    "type": "project",
+    "license": "MPL-2.0",
+    "support": {
+        "issues": "https://github.com/SingleSO/singleso/issues",
+        "source": "https://github.com/SingleSO/singleso"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*",
+        "yiisoft/yii2-bootstrap": "*",
+        "yiisoft/yii2-swiftmailer": "*",
+        "dektrium/yii2-user": "*",
+        "rmrevin/yii2-minify-view": "*"
+    },
+    "require-dev": {
+        "yiisoft/yii2-codeception": "*",
+        "yiisoft/yii2-debug": "*",
+        "yiisoft/yii2-gii": "*",
+        "yiisoft/yii2-faker": "*"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    }
+}
