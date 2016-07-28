@@ -43,14 +43,26 @@ $this->beginPage();
 		$items[] = $item;
 	}
 	if (trim(Config::setting('page.about.content'))) {
-		$items[] = ['label' => 'About', 'url' => ['/site/about']];
+		$items[] = [
+			'label' => 'About',
+			'url' => ['/site/about'],
+		];
 	}
 	if (trim(Config::setting('page.contact.content'))) {
-		$items[] = ['label' => 'Contact', 'url' => ['/site/contact']];
+		$items[] = [
+			'label' => 'Contact',
+			'url' => ['/site/contact'],
+		];
 	}
 	if (Yii::$app->user->isGuest) {
-		$items[] = ['label' => 'Register', 'url' => ['/user/registration/register']];
-		$items[] = ['label' => 'Login', 'url' => ['/user/security/login']];
+		$items[] = [
+			'label' => 'Register',
+			'url' => ['/user/registration/register'],
+		];
+		$items[] = [
+			'label' => 'Login',
+			'url' => ['/user/security/login'],
+		];
 	}
 	else {
 		if (Yii::$app->user->identity->isAdmin) {
@@ -66,12 +78,12 @@ $this->beginPage();
 		}
 		$items[] = [
 			'label' => 'Profile (' . Yii::$app->user->identity->username . ')',
-			'url' => ['/user/settings']
+			'url' => ['/user/settings'],
 		];
 		$items[] = [
 			'label' => 'Logout',
 			'url' => ['/user/security/logout'],
-			'linkOptions' => ['data-method' => 'post']
+			// 'linkOptions' => ['data-method' => 'post']
 		];
 	}
 	echo Nav::widget([

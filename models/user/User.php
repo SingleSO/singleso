@@ -78,7 +78,6 @@ class User extends BaseUser {
 
 	public static function globalCookieName() {
 		// If the parameter is set, set the global cookie flag.
-		// TODO: Show it somewhere in admin settings.
 		$params = Yii::$app->params;
 		$cookie = 'global.auth.cookie.name';
 

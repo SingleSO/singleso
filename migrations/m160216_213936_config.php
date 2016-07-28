@@ -1,6 +1,5 @@
 <?php
 
-use yii\db\Schema;
 use app\migrations\Migration;
 
 class m160216_213936_config extends Migration

@@ -27,6 +27,17 @@ class SiteController extends Controller {
 	}
 
 	public function actionIndex() {
+		return $this->actionLogin();
+	}
+
+	public function actionLogout() {
+		// Set the redirect data if supplied.
+		Oauth2::setSessionLogoutRedirect(Oauth2::redirectLogoutData());
+
+		return $this->redirect(['/user/security/logout']);
+	}
+
+	public function actionLogin() {
 		return $this->redirectUser(
 			['/user/security/login'],
 			['/user/settings']
@@ -75,7 +86,6 @@ class SiteController extends Controller {
 		]);
 	}
 
-	// TODO: Is the redirect being valid outside the first auth page an issue?
 	public function actionFirstRegistrationRedirect() {
 		$location = Oauth2::getSessionRedirectLocation(null, false);
 		if (!$location) {

@@ -103,8 +103,7 @@ class CodeForm extends Model {
 			return;
 		}
 		$value = $this->{$attribute};
-		// Only exact matches allowed, avoids directory traversal tricks.
-		if (!in_array($value, $client->redirectURIsList)) {
+		if (!$client->validateRedirectURI($value)) {
 			$this->addError($attribute, 'Invalid redirect_uri: ' . $value);
 		}
 	}

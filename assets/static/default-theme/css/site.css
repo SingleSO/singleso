@@ -16,8 +16,8 @@ body {
 
 .footer {
 	height: 60px;
-	background-color: #f5f5f5;
-	border-top: 1px solid #ddd;
+	background-color: #F5F5F5;
+	border-top: 1px solid #DDDDDD;
 	padding-top: 20px;
 }
 
@@ -32,7 +32,7 @@ body {
 }
 
 .not-set {
-	color: #c55;
+	color: #CC5555;
 	font-style: italic;
 }
 
@@ -79,13 +79,93 @@ a.desc:after {
 .hint-block {
 	display: block;
 	margin-top: 5px;
-	color: #999;
+	color: #999999;
 }
 
 .error-summary {
-	color: #a94442;
-	background: #fdf7f7;
-	border-left: 3px solid #eed3d7;
+	color: #A94442;
+	background: #FDF7F7;
+	border-left: 3px solid #EED3D7;
 	padding: 10px 20px;
 	margin: 0 0 15px 0;
+}
+
+.logout-panel .logout-list {
+	font-size: 1.25em;
+}
+
+.logout-panel .logout-list,
+.logout-panel .logout-list li {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.logout-panel .logout-list .logout-list-status {
+	font-size: 1.5em;
+	width: 1em;
+	height: 1em;
+	line-height: 1;
+	vertical-align: bottom;
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+}
+.logout-panel .logout-list .logout-list-status:before {
+	display: inline-block;
+	height: 100%;
+}
+.logout-panel .logout-list [data-status="pending"] .logout-list-status:before {
+	content: '?';
+}
+.logout-panel .logout-list [data-status="success"] .logout-list-status:before {
+	content: '\2713 ';
+	color: #009900;
+}
+.logout-panel .logout-list [data-status="failure"] .logout-list-status:before {
+	content: '\2718 ';
+	color: #DD0000;
+}
+.logout-panel .logout-list [data-status="loading"] .logout-list-status:before {
+	content: '...';
+	position: absolute;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	-webkit-animation: logout-list-status-icon 1s linear infinite;
+	   -moz-animation: logout-list-status-icon 1s linear infinite;
+	     -o-animation: logout-list-status-icon 1s linear infinite;
+	        animation: logout-list-status-icon 1s linear infinite;
+}
+@-webkit-keyframes logout-list-status-icon {
+	0% {
+		width: 0;
+	}
+	75% {
+		width: 100%;
+	}
+}
+@-moz-keyframes logout-list-status-icon {
+	0% {
+		width: 0;
+	}
+	75% {
+		width: 100%;
+	}
+}
+
+@-o-keyframes logout-list-status-icon {
+	0% {
+		width: 0;
+	}
+	75% {
+		width: 100%;
+	}
+}
+
+@keyframes logout-list-status-icon {
+	0% {
+		width: 0;
+	}
+	75% {
+		width: 100%;
+	}
 }

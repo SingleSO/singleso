@@ -105,19 +105,23 @@ $this->title = 'Settings';
 							$model->defaultValue('oauth2_token_expire') .
 							'</code>)') ?>
 					<p>These settings set the time in seconds that OAuth 2 codes and tokens last before expiration. Use negative value to never expire.</p>
+					<?= $form->field($model, 'oauth2_endpoint')
+						->textinput(['readonly' => true])
+						->label('OAuth 2 Endpoint') ?>
 					<?= $form->field($model, 'oauth2_loginurl')
 						->textinput(['readonly' => true])
 						->label('OAuth 2 Login') ?>
 					<?= $form->field($model, 'oauth2_registerurl')
 						->textinput(['readonly' => true])
 						->label('OAuth 2 Register') ?>
-					<?= $form->field($model, 'oauth2_endpoint')
+					<?= $form->field($model, 'oauth2_logouturl')
 						->textinput(['readonly' => true])
-						->label('OAuth 2 Endpoint') ?>
+						->label('OAuth 2 Logout') ?>
 					<?= $form->field($model, 'oauth2_domain_global_cookie_name')
 						->textinput(['readonly' => true])
 						->label('Domain Global Cookie Name') ?>
 					<p>Domain global cookie is the name of a cookie set global for the domain to check if logged in.</p>
+					<p>Set by config files like other cookie names. If empty then cookie is disabled.</p>
 				</div>
 			</div>
 			<div class="panel panel-default">

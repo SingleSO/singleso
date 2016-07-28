@@ -60,10 +60,13 @@ $config = [
 			// true uses path directly, false uses r=/path
 			'enablePrettyUrl' => true,
 			'rules' => [
-				// Alias some common routes.
-				'<alias:(register/?|about/?|contact/?)>' => 'site/<alias>',
-				'<alias:(user/?)>' => 'user/settings',
-				'<alias:(login/?|logout/?)>' => 'user/security/<alias>',
+				// Alias the controller bases.
+				'<alias:user(/?)>' => 'user/settings',
+				'<alias:admin(/?)>' => '<alias>',
+				'<alias:oauth2(/?)>' => '<alias>',
+				'<alias:oauth2-client(/?)>' => '<alias>',
+				// Default to site controller.
+				'<action:[\w-]+(/?)>' => 'site/<action>',
 			],
 		],
 		'view' => [
@@ -101,6 +104,9 @@ $config = [
 				'LoginForm' => 'app\models\user\LoginForm',
 				'SettingsForm' => 'app\models\user\SettingsForm',
 				'RegistrationForm' => 'app\models\user\RegistrationForm',
+			],
+			'controllerMap' => [
+				'security' => 'app\controllers\user\SecurityController'
 			],
 		],
 	],

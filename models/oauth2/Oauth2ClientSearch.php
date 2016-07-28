@@ -17,7 +17,7 @@ class Oauth2ClientSearch extends Oauth2Client {
 	 */
 	public function rules() {
 		return [
-			[['client', 'client_secret', 'scopes', 'redirect_uris'], 'safe'],
+			[['client', 'client_secret', 'scopes', 'redirect_uris', 'logout_uri'], 'safe'],
 			[['created_at', 'updated_at'], 'integer'],
 		];
 	}
@@ -60,7 +60,8 @@ class Oauth2ClientSearch extends Oauth2Client {
 		$query->andFilterWhere(['like', 'client', $this->client])
 			->andFilterWhere(['like', 'client_secret', $this->client_secret])
 			->andFilterWhere(['like', 'scopes', $this->scopes])
-			->andFilterWhere(['like', 'redirect_uris', $this->redirect_uris]);
+			->andFilterWhere(['like', 'redirect_uris', $this->redirect_uris])
+			->andFilterWhere(['like', 'logout_uri', $this->logout_uri]);
 
 		return $dataProvider;
 	}

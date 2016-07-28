@@ -37,6 +37,7 @@ class SettingsForm extends Model {
 
 	public $oauth2_loginurl;
 	public $oauth2_registerurl;
+	public $oauth2_logouturl;
 	public $oauth2_endpoint;
 	public $oauth2_domain_global_cookie_name;
 
@@ -118,9 +119,10 @@ class SettingsForm extends Model {
 
 	public function init() {
 		parent::init();
-		$this->oauth2_endpoint = Url::toRoute(['/oauth2'], true);
-		$this->oauth2_loginurl = Url::toRoute(['/'], true);
+		$this->oauth2_loginurl = Url::toRoute(['/site/login'], true);
 		$this->oauth2_registerurl = Url::toRoute(['/site/register'], true);
+		$this->oauth2_logouturl = Url::toRoute(['/site/logout'], true);
+		$this->oauth2_endpoint = Url::toRoute(['/oauth2'], true);
 		$params = Yii::$app->params;
 		$cookie = 'global.auth.cookie.name';
 		$this->oauth2_domain_global_cookie_name = (isset($params[$cookie]) && is_string($params[$cookie]) && $params[$cookie]) ?

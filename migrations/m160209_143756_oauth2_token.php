@@ -1,6 +1,5 @@
 <?php
 
-use yii\db\Schema;
 use app\migrations\Migration;
 
 class m160209_143756_oauth2_token extends Migration {
