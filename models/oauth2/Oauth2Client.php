@@ -66,12 +66,33 @@ class Oauth2Client extends ActiveRecord {
 	}
 
 	public function validateRedirectURI($value) {
+		if (!$value) {
+			return null;
+		}
 		// Only exact matches allowed, avoids directory traversal tricks.
-		return $value && in_array($value, $this->getRedirectURIsList());
-	}
+		// However the https and http protocols may be ommitted.
+		// In that case, it will be search for and expanded if valid.
+		$list = $this->getRedirectURIsList();
 
-	public function validateLogoutURI($value) {
-		return $value && $value === $this->logout_uri;
+		// If the protocol is included, use it only.
+		if (parse_url($value, PHP_URL_SCHEME)) {
+			if (in_array($value, $list)) {
+				return $value;
+			}
+			return null;
+		}
+
+		// Strip off any parts of the protocol included.
+		$noproto = ltrim($value, ':/');
+
+		// Check both https and http, but prefer https.
+		foreach (['https', 'http'] as $proto) {
+			$test = $proto . '://' . $noproto;
+			if (in_array($test, $list)) {
+				return $test;
+			}
+		}
+		return null;
 	}
 
 	public function validateFormat($attribute, $params) {

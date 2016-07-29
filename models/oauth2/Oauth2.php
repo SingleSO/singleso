@@ -191,10 +191,10 @@ class Oauth2 extends Model {
 		if (!$client) {
 			return null;
 		}
-		if (!$client->validateRedirectURI($data['redirect_uri'])) {
+		$r = $client->validateRedirectURI($data['redirect_uri']);
+		if (!$r) {
 			return null;
 		}
-		$r = $data['redirect_uri'];
 		if (isset($data['state'])) {
 			$r .= (parse_url($r, PHP_URL_QUERY) ? '&' : '?') .
 				http_build_query(['state' => $data['state']]);

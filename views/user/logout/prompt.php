@@ -11,7 +11,6 @@ use yii\bootstrap\ActiveForm;
 use yii\captcha\Captcha;
 
 $this->title = 'Logout all?';
-// var_dump(!$model->active_user_logout);
 ?>
 
 <div class="row">
@@ -24,22 +23,25 @@ $this->title = 'Logout all?';
 		<div class="form-group logout-panel">
 		<?php
 		$form = ActiveForm::begin(['id' => 'logout-form']);
-		if (!empty($model->logouts['valid'])) {
-			?>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h2 class="panel-title">Logout the following services?</h2>
-				</div>
-				<div class="panel-body">
-					<ul class="logout-list"><?php
-						foreach ($model->logouts['valid'] as $service) {
-							?><li><?= Html::encode($service->client_name) ?></li><?php
-						}
-					?></ul>
-				</div>
+		?>
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h2 class="panel-title">Logout the following services?</h2>
 			</div>
-			<?php
-		}
+			<div class="panel-body"><?php
+				if (empty($model->logouts['valid'])) {
+					?>No additional services registred to be logged out.<?php
+				}
+				else {
+					?><ul class="logout-list"><?php
+					foreach ($model->logouts['valid'] as $service) {
+						?><li><?= Html::encode($service->client_name) ?></li><?php
+					}
+					?></ul><?php
+				}
+			?></div>
+		</div>
+		<?php
 		if (!empty($model->logouts['invalid'])) {
 			?>
 			<div class="panel panel-default">

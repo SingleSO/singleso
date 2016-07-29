@@ -103,7 +103,11 @@ class CodeForm extends Model {
 			return;
 		}
 		$value = $this->{$attribute};
-		if (!$client->validateRedirectURI($value)) {
+		$validated = $client->validateRedirectURI($value);
+		if ($validated) {
+			$this->{$attribute} = $validated;
+		}
+		else {
 			$this->addError($attribute, 'Invalid redirect_uri: ' . $value);
 		}
 	}

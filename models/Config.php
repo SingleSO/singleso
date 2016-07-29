@@ -13,7 +13,7 @@ class Config extends ActiveRecord {
 
 	protected static $_settings = [
 		'application.admin.email' => '',
-		'application.home.url' => 'http://',
+		'application.home.url' => '',
 		'application.name' => 'Single Sign On',
 		'application.copyright' => 'Powered by SingleSO!',
 		'application.theme' => '',

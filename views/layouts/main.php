@@ -83,7 +83,6 @@ $this->beginPage();
 		$items[] = [
 			'label' => 'Logout',
 			'url' => ['/user/security/logout'],
-			// 'linkOptions' => ['data-method' => 'post']
 		];
 	}
 	echo Nav::widget([
